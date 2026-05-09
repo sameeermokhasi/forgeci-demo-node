@@ -1,28 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('Install') {
+    stage('Hotfix Checkout') {
       steps {
-        sh 'echo "Installing Node.js dependencies..."'
-        sh 'echo "npm install complete"'
+        sh 'echo "[HOTFIX] Checking out emergency auth crash fix..."'
       }
     }
-    stage('Test') {
+    stage('Fast Test') {
       steps {
-        sh 'echo "Running Jest unit tests..."'
-        sh 'echo "All 42 tests passed"'
+        sh 'echo "Running targeted auth regression tests..."'
+        sh 'echo "Auth tests: PASSED"'
       }
     }
-    stage('Build') {
+    stage('Emergency Deploy') {
       steps {
-        sh 'echo "Building production bundle..."'
-        sh 'echo "Build artifact: dist/app.js (2.4MB)"'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        sh 'echo "Deploying to production server..."'
-        sh 'echo "Deploy complete: https://demo-node.forgeci.app"'
+        sh 'echo "[HOTFIX] Fast-tracking deployment to production..."'
+        sh 'echo "Auth crash fix deployed successfully"'
       }
     }
   }
